@@ -56,8 +56,8 @@ contract Puppy_Attack {
     
     function _attack(uint _attackingPuppyId, uint _targetedPuppyId) public restrictedToOwner(_attackingPuppyId){
         require(allPuppies[_targetedPuppyId].level > 0);
-        Puppy memory attackingPuppy = allPuppies[_attackingPuppyId];
-        Puppy memory targetedPuppy = allPuppies[_targetedPuppyId];
+        Puppy storage attackingPuppy = allPuppies[_attackingPuppyId];
+        Puppy storage targetedPuppy = allPuppies[_targetedPuppyId];
 
         uint rand = randMod(100);
         if (attackingPuppy.level > targetedPuppy.level && rand > 70 || attackingPuppy.level == targetedPuppy.level && rand > 50 || attackingPuppy.level < targetedPuppy.level && rand > 30) {
