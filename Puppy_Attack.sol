@@ -22,12 +22,16 @@ contract Puppy_Attack {
 
     Puppy[] allPuppies;
     
-    function getAllPuppies() public view returns(uint) {
+    function getAllPuppiesNumber() public view returns(uint) {
         return allPuppies.length;
     }
     
     function getMyPuppiesLevel(uint puppyId) public view returns(uint) {
         return allPuppies[puppyId].level;
+    }
+    
+    function getMyPuppiesName(uint puppyId) public view returns(string memory) {
+        return allPuppies[puppyId].name;
     }
     
     modifier restrictedToOwner(uint puppyId) {
