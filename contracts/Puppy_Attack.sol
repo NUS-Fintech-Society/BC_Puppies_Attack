@@ -1,6 +1,6 @@
-pragma solidity ^0.6.12;
+pragma solidity ^0.6.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract Puppy_Attack {
     // Make use of SafeMath to do calculation that will not be result in overflow / incorrectness
@@ -73,7 +73,7 @@ contract Puppy_Attack {
         }
     }
 
-    function randMod(uint _modulus) internal returns(uint) {
+    function randMod(uint _modulus) internal view returns(uint) {
         uint randNonce = 0;
         randNonce = randNonce.add(1);
         return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
