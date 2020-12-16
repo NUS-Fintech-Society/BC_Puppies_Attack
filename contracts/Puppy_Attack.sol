@@ -14,7 +14,6 @@ contract Puppy_Attack {
         uint id;
         string name;
         uint level;
-        uint puppy_type;
         address owner;
     }
     
@@ -39,8 +38,8 @@ contract Puppy_Attack {
         _;
     }
 
-    function _create(string memory puppyName, uint puppyType) public {
-        Puppy memory newPuppy = Puppy(allPuppies.length, puppyName, 5, puppyType, msg.sender);
+    function _create(string memory puppyName) public {
+        Puppy memory newPuppy = Puppy(allPuppies.length, puppyName, 5, msg.sender);
         allPuppies.push(newPuppy);
     }
 
