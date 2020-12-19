@@ -40,7 +40,7 @@ class App extends Component {
       <div className="App">
         {!this.state.web3 || this.state.isError === true 
           ? <ErrorPage />
-          : <HomePage />}
+          : <HomePage web3={this.state.web3} accounts={this.state.accounts} contract={this.state.contract}/>}
       </div>
     )
   }
