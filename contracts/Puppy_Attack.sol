@@ -79,7 +79,7 @@ contract Puppy_Attack {
     }
     
     function revive(uint puppyId) public payable restrictedToOwner(puppyId) {
-        require(allPuppies[puppyId].level == 0, "Your puppy does not require reviving");
+        require(allPuppies[puppyId].level == 0, "Your puppy does not require reviving.");
         require(msg.value == reviveRate, "You will need to pay 0.01 ether to revive your puppy.");
         allPuppies[puppyId].level = allPuppies[puppyId].level.add(1);
     }
