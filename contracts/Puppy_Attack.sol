@@ -19,7 +19,7 @@ contract Puppy_Attack {
     
     mapping(address => uint[]) internal userToPuppy; //mapping (address -> uint[puppyId])
 
-    Puppy[] allPuppies;
+    Puppy[] public allPuppies;
     
     function getAllPuppiesNumber() public view returns(uint) {
         return allPuppies.length;
