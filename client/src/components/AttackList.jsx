@@ -23,7 +23,7 @@ class AttackList extends React.Component {
         })
     }
 
-    handleSubmit() {
+    async handleSubmit() {
         const attackingPuppyId = this.state.attackingPuppyId
         const targetPuppyId = this.state.targetPuppyId
         if (attackingPuppyId === -1 || targetPuppyId === -1) {
@@ -31,15 +31,15 @@ class AttackList extends React.Component {
                 message: "Choose a attacking Puppy and a target Puppy please"
             })
         } else {
-            this.props.web3.methods._attack(attackingPuppyId, targetPuppyId)
+            await this.props.contract.methods._attack(attackingPuppyId, targetPuppyId)
             //DElete the need for return parameters. Or only one event with message passed as success or failure
-            this.props.web3.events.SuccessAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
+            await this.props.contract.events.SuccessAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
                 .on("data", function(event) {
                 this.setState({
                     message: "Attack Success! Such a brilliant puppy! Your puppy's level have increased by one :)"
                 })}).on("error", console.error);
 
-            this.props.web3.events.FailAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
+            await this.props.contract.events.FailAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
                 .on("data", function(event) {
                 this.setState({
                     message: "Attack Failed! No penalties given to your puppy. Better luck next time! :)"
@@ -47,9 +47,9 @@ class AttackList extends React.Component {
         }
     }
     
-    render() {
-        const allPuppies = this.props.contract.methods.allPuppies.filter(x => x.owner !== this.props.accounts)
-        const myPuppies = this.props.contract.methods.userToPuppies[this.props.accounts]
+    async render() {
+        const allPuppies = await this.props.contract.methods.allPuppies.filter(x => x.owner !== this.props.accounts)
+        const myPuppies = await this.props.contract.methods.userToPuppies[this.props.accounts]
         const myPuppiesList = myPuppies.map(puppy => (
             <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
         ))        
