@@ -48,29 +48,29 @@ class AttackList extends React.Component {
     }
     
     render() {
-        // const allPuppies = this.props.contract.methods.allPuppies.filter(x => x.owner !== this.props.accounts)
-        // const myPuppies = this.props.contract.methods.userToPuppies[this.props.accounts]
-        // const myPuppiesList = myPuppies.map(puppy => (
-        //     <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
-        // ))        
-        // const otherPuppiesList = allPuppies.map(puppy => (
-        //     <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
-        // ))
+        const allPuppies = this.props.contract.methods.allPuppies.filter(x => x.owner !== this.props.accounts)
+        const myPuppies = this.props.contract.methods.userToPuppies[this.props.accounts]
+        const myPuppiesList = myPuppies.map(puppy => (
+            <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
+        ))        
+        const otherPuppiesList = allPuppies.map(puppy => (
+            <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
+        ))
 
-        // var message = '';
-        // const [show, setShow] = useState(true);
-        // if (this.state.message !== "") {
-        //     message = (
-        //         <AlertMessage type="info" show={show} onClose={() => setShow(false)}>
-        //             {this.state.message}
-        //         </AlertMessage>
-        //     )
-        // }
+        var message = '';
+        const [show, setShow] = useState(true);
+        if (this.state.message !== "") {
+            message = (
+                <AlertMessage type="info" show={show} onClose={() => setShow(false)}>
+                    {this.state.message}
+                </AlertMessage>
+            )
+        }
 
         return (
             <div>
                 <h3>Attack Another Puppy!!!</h3>
-                {/* <form name="AttackForm" onSubmit={this.handleSubmit()}>
+                <form name="AttackForm" onSubmit={this.handleSubmit()}>
                     <div class="form-group">
                         <label for="myPuppies">Select your puppy to attack:</label>
                         <select class="form-control" id="myPuppies" value={this.state.attackingPuppyId} onChange={this.handleInputChange} required>
@@ -87,7 +87,7 @@ class AttackList extends React.Component {
                     <input id="submit" type="submit" value="Attack!!!"></input>
                 </form>
 
-                {message} */}
+                {message}
             </div>
         )
     }
