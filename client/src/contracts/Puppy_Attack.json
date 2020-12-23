@@ -50,8 +50,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -70,8 +69,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -90,8 +88,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -117,8 +114,7 @@
       "name": "_levelUp",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -167,8 +163,7 @@
       "name": "revive",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function",
-      "payable": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.6.0+commit.26b70077\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_attackingPuppyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_targetedPuppyId\",\"type\":\"uint256\"}],\"name\":\"FailAttack\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_attackingPuppyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_targetedPuppyId\",\"type\":\"uint256\"}],\"name\":\"SuccessAttack\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_attackingPuppyId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_targetedPuppyId\",\"type\":\"uint256\"}],\"name\":\"_attack\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"puppyId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"newName\",\"type\":\"string\"}],\"name\":\"_changeName\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"puppyName\",\"type\":\"string\"}],\"name\":\"_create\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"puppyId\",\"type\":\"uint256\"}],\"name\":\"_levelUp\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllPuppiesNumber\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"puppyId\",\"type\":\"uint256\"}],\"name\":\"getMyPuppiesLevel\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"puppyId\",\"type\":\"uint256\"}],\"name\":\"getMyPuppiesName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"puppyId\",\"type\":\"uint256\"}],\"name\":\"revive\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/larlo/Downloads/Github/Blockchain/Puppies-Attack/contracts/Puppy_Attack.sol\":\"Puppy_Attack\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/larlo/Downloads/Github/Blockchain/Puppies-Attack/contracts/Puppy_Attack.sol\":{\"keccak256\":\"0xc67a6d858768251bcb530804a1124eb8f89ba72363d0d547ef4603fed7665a6f\",\"urls\":[\"bzz-raw://de6d31972a54fee8527eb05c302880814a17dea1024d9a46b122a99f9cd3ee66\",\"dweb:/ipfs/QmQfe9F6iutCJghSnaEHVibBB6QiftvVmkyFSLGn1LgmPL\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]}},\"version\":1}",
@@ -10187,8 +10182,7 @@
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2020-12-23T09:02:17.482Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-12-23T13:55:23.388Z",
   "devdoc": {
     "methods": {}
   },
