@@ -1,10 +1,12 @@
 import React from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 
 const ErrorPage = () => {
     return (
         <div>
             <h3>Error Page</h3>
-            <p>You do not have metamask installed, please do install metamask and enable it to use the webpage.</p>
+            <Spinner animation="border" />
+            <p>Please install metamask and connect to our website in order to use our puppies attack service.</p>
         </div>
     )
 }

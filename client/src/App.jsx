@@ -36,6 +36,8 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state.accounts);
+    console.log(this.state.contract !== null ? this.state.contract.methods : null);
     return (
       <div className="App">
         {!this.state.web3 || this.state.isError === true 
