@@ -10095,6 +10095,51 @@
     "version": "0.6.0+commit.26b70077.Emscripten.clang"
   },
   "networks": {
+    "3": {
+      "events": {
+        "0x746d7417022fd01d9e0ec9c752ab63e9e99610ae98647ae3bc4934a9234ae77a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_attackingPuppyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_targetedPuppyId",
+              "type": "uint256"
+            }
+          ],
+          "name": "FailAttack",
+          "type": "event"
+        },
+        "0x9d70f5f548eae84d9acc2e158a9e45f89a5847068d9a2e10d87f5a0a330b1063": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_attackingPuppyId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_targetedPuppyId",
+              "type": "uint256"
+            }
+          ],
+          "name": "SuccessAttack",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xEb9662ad6368764f7fA7f4263D26F8f7669EE882",
+      "transactionHash": "0xc48f27499688bca0583c2a16237ed3037f24fcca14365e961b8450c9555578f2"
+    },
     "5777": {
       "events": {
         "0x746d7417022fd01d9e0ec9c752ab63e9e99610ae98647ae3bc4934a9234ae77a": {
@@ -10142,7 +10187,7 @@
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2020-12-18T11:28:04.088Z",
+  "updatedAt": "2020-12-23T09:02:17.482Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
