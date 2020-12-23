@@ -9,7 +9,7 @@ import ChangeName from '../components/ChangeName';
 
 
 const HomePage = props => {
-    
+
     const [show, setShow] = useState(false);
     const [searchfield, setSearchfield] = useState('');
 
@@ -20,8 +20,8 @@ const HomePage = props => {
     // Change show to true for the transition
     useEffect(() => {
         setShow(true);
-    }, []); 
-    
+    }, []);
+
     return (
         <div>
             <div className="tc">
@@ -37,6 +37,7 @@ const HomePage = props => {
                 <ScrollAble>
                     {/* <Cardlist cats={filteredCats} /> */}
                 </ScrollAble>
+                <Listing web3={props.web3} contract={props.contract} accounts={props.accounts} />
             </div>
         </div>
     )

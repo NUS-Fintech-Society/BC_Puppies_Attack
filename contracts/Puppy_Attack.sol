@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 contract Puppy_Attack {
     // Make use of SafeMath to do calculation that will not be result in overflow / incorrectness
     using SafeMath for uint;
-    
+
     // Constants
     uint reviveRate = 0.01 ether;
     uint levelUpFee = 0.005 ether;
@@ -16,23 +16,23 @@ contract Puppy_Attack {
         uint level;
         address owner;
     }
-    
+
     mapping(address => uint[]) public userToPuppy; //mapping (address -> uint[puppyId])
 
     Puppy[] public allPuppies;
-    
+
     function getAllPuppiesNumber() public view returns(uint) {
         return allPuppies.length;
     }
-    
+
     function getMyPuppiesLevel(uint puppyId) public view returns(uint) {
         return allPuppies[puppyId].level;
     }
-    
+
     function getMyPuppiesName(uint puppyId) public view returns(string memory) {
         return allPuppies[puppyId].name;
     }
-    
+
     modifier restrictedToOwner(uint puppyId) {
         require(msg.sender == allPuppies[puppyId].owner, "Please make sure that you are the owner of the puppy.");
         _;
@@ -48,16 +48,16 @@ contract Puppy_Attack {
         require(msg.value == levelUpFee, "Please pay the exact level up fee of 0.005 ether.");
         allPuppies[puppyId].level = allPuppies[puppyId].level.add(1);
     }
-    
+
     function _changeName(uint puppyId, string memory newName) public restrictedToOwner(puppyId) {
         Puppy storage toBeChanged = allPuppies[puppyId];
         toBeChanged.name = newName;
     }
-    
+
     event FailAttack(uint _attackingPuppyId, uint _targetedPuppyId);
     event SuccessAttack(uint _attackingPuppyId, uint _targetedPuppyId);
     event PuppyCreated(uint _puppyId);
-    
+
     function _attack(uint _attackingPuppyId, uint _targetedPuppyId) public restrictedToOwner(_attackingPuppyId){
         require(allPuppies[_targetedPuppyId].level > 0);
         Puppy storage attackingPuppy = allPuppies[_attackingPuppyId];
@@ -78,7 +78,7 @@ contract Puppy_Attack {
         randNonce = randNonce.add(1);
         return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
     }
-    
+
     function revive(uint puppyId) public payable restrictedToOwner(puppyId) {
         require(allPuppies[puppyId].level == 0, "Your puppy does not require reviving.");
         require(msg.value == reviveRate, "You will need to pay 0.01 ether to revive your puppy.");
