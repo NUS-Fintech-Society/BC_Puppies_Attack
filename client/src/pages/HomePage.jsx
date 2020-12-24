@@ -14,7 +14,7 @@ const HomePage = props => {
                 Welcome
             </AlertMessage>
             <BuyPuppy web3={props.web3} contract={props.contract} accounts={props.accounts}/>
-            <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList>
+            {/* <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList> */}
             <h3>Hi</h3>
         </div>
     )
