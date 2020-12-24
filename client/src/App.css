@@ -18,6 +18,7 @@ h1{
   font-family: 'SEGA LOGO FONT';
   font-weight: 200;
   color: #2f7e87;
+  margin-bottom: 10px !important;
 }
 body {
   margin: 0;

@@ -3,8 +3,11 @@ import AlertMessage from '../components/AlertMessage';
 import ScrollAble from '../components/ScrollAble';
 import SearchBox from '../components/SearchBox';
 import 'tachyons'
+// import AttackList from '../components/AttackList';
+import BuyPuppy from '../components/BuyPuppy';
 
-const HomePage = () => {
+
+const HomePage = props => {
     
     const [show, setShow] = useState(false);
     const [searchfield, setSearchfield] = useState('');
@@ -28,6 +31,8 @@ const HomePage = () => {
                 </AlertMessage>
                 <h1 className="f2">Puppies Attack</h1>
                 <SearchBox searchChange = {onSearchChange} />
+                <BuyPuppy web3={props.web3} contract={props.contract} accounts={props.accounts}/>
+                {/* <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList> */}
                 <ScrollAble>
                     {/* <Cardlist cats={filteredCats} /> */}
                 </ScrollAble>
