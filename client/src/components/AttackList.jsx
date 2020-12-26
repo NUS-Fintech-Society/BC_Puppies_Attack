@@ -93,13 +93,13 @@ class AttackList extends React.Component {
 
     listenToEvent = () => {
         
-        this.props.contract.events.SuccessAttack()
+        this.props.contract.events.SuccessAttack({filter: { _attackingPuppyId: this.state.attackingPuppyId } })
         .on("data", function(event) {
             console.log("Successss")
             alert("Attack Success! Such a brilliant puppy! Your puppy's level have increased by one :) Please wait for page to refresh, if it did not refresh, refresh it yourself to see your puppies' new level")
         }).on("error", console.error);
 
-        this.props.contract.events.FailAttack()
+        this.props.contract.events.FailAttack({filter: { _attackingPuppyId: this.state.attackingPuppyId } })
         .on("data", function(event) {
             console.log("Failuuuure")
             alert("Attack Failed! No penalties given to your puppy. Better luck next time! :)")
