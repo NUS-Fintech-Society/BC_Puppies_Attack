@@ -38,6 +38,9 @@ class App extends Component {
   render() {
     console.log(this.state.accounts);
     console.log(this.state.contract !== null ? this.state.contract.methods : null);
+    console.log(this.state.contract !== null ? this.state.contract.methods.getAllPuppiesNumber().call().then(console.log) : null);
+    console.log(this.state.contract !== null ? this.state.contract.methods.allPuppies(0).call().then(console.log) : null);
+
     return (
       <div className="App">
         {!this.state.web3 || this.state.isError === true 

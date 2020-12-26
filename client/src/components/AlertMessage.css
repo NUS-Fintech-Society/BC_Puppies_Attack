@@ -1,4 +1,10 @@
+#alertBox {
+    width: 100%;
+    position:absolute;
+    bottom: 10px;
+} 
 .alertMessage {
     width: 90%;
     margin: auto;
+    text-align: center;
 }

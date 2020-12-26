@@ -17,7 +17,7 @@ contract Puppy_Attack {
         address owner;
     }
     
-    mapping(address => uint[]) internal userToPuppy; //mapping (address -> uint[puppyId])
+    mapping(address => uint[]) public userToPuppy; //mapping (address -> uint[puppyId])
 
     Puppy[] public allPuppies;
     
