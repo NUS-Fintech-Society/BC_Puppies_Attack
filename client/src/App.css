@@ -5,10 +5,30 @@ html {
   align-items: center;
   height: 100%;
 }
-body {
-  width: 100%;
-  text-align: center;
-}
 .App {
   text-align: center;
+}
+@font-face {
+  font-family: 'SEGA LOGO FONT';
+  font-style: normal;
+  font-weight: normal;
+  src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
+}
+h1{
+  font-family: 'SEGA LOGO FONT';
+  font-weight: 200;
+  color: #2f7e87;
+  margin-bottom: 10px !important;
+}
+body {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(140,235,173,1) 0%, rgba(0,212,255,1) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

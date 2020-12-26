@@ -17,7 +17,7 @@ contract Puppy_Attack {
         address owner;
     }
     
-    mapping(address => uint[]) internal userToPuppy; //mapping (address -> uint[puppyId])
+    mapping(address => uint[]) public userToPuppy; //mapping (address -> uint[puppyId])
 
     Puppy[] public allPuppies;
     
@@ -56,6 +56,7 @@ contract Puppy_Attack {
     
     event FailAttack(uint _attackingPuppyId, uint _targetedPuppyId);
     event SuccessAttack(uint _attackingPuppyId, uint _targetedPuppyId);
+    event PuppyCreated(uint _puppyId);
     
     function _attack(uint _attackingPuppyId, uint _targetedPuppyId) public restrictedToOwner(_attackingPuppyId){
         require(allPuppies[_targetedPuppyId].level > 0);
