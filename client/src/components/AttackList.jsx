@@ -47,9 +47,15 @@ class AttackList extends React.Component {
         }
     }
     
-    async render() {
-        const allPuppies = await this.props.contract.methods.allPuppies.filter(x => x.owner !== this.props.accounts)
-        const myPuppies = await this.props.contract.methods.userToPuppies[this.props.accounts]
+    render() {
+        console.log(this.props.contract.methods.allPuppies(0).call().then(function(result) {console.log(result)}))
+        console.log(this.props.contract.methods.getAllPuppiesNumber().call())
+        console.log(this.props.contract.methods.getMyPuppiesName(0).call())
+        console.log(this.props.contract.methods.getMyPuppiesLevel(0).call())
+        const myPuppies = this.props.contract.methods.userToPuppy(this.props.accounts).call()
+        console.log(myPuppies)
+        const allPuppies = this.props.contract.methods.allPuppies(0).call().then(x => x.filter(y => y.owner !== this.props.accounts))
+        
         const myPuppiesList = myPuppies.map(puppy => (
             <option value={puppy.id}>Name: {puppy.name} Level: {puppy.level}</option>
         ))        
