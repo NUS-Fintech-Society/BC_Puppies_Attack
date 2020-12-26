@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
+import Card from './Card';
 
 const Listing = props => {
-    const [puppyIds, setPuppyIds] = useState([]);
+    const [puppies, setPuppies] = useState([]);
     useEffect(async () => {
-        const allPuppiesCount = await props.contract.methods.getAllPuppiesNumber().call();
-        const allPuppyIds = [...Array(1+parseInt(allPuppiesCount)).keys()];
-        setPuppyIds(allPuppyIds);
+        const puppiesCount = await props.contract.methods.getAllPuppiesNumber().call();
+        const puppies = [];
+        for (let i = 0; i < puppiesCount; i++) {
+            const puppy = await props.contract.methods.allPuppies(i).call();
+            puppies.push(puppy);
+        }
+        setPuppies(puppies);
     }, []);
+
     return (
         <div>
-            <ul>
-                {puppyIds.map(i => (
-                    <li key={i}>
-                        <h3>{i}</h3>
-                    </li>
-                ))}
-            </ul>
+            {puppies.map((puppy) => {
+                return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} />
+            })}
         </div>
     );
 }
