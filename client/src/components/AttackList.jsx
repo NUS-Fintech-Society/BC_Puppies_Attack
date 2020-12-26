@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AlertMessage from '../components/AlertMessage';
 
 class AttackList extends React.Component {
     constructor(props) {
@@ -22,11 +21,21 @@ class AttackList extends React.Component {
             var myPuppies = [];
             var otherPuppies = [];
             const length = await contract.methods.getAllPuppiesNumber().call()
+            var firstOwn = true;
+            var firstOther = true;
             for (var i = 0; i < length; i++) {
                 const puppy = await contract.methods.allPuppies(i).call()
                 if (puppy.owner === accounts[0] && puppy.level > 0) {
+                    if (firstOwn) {
+                        this.setState({attackingPuppyId: puppy.id})
+                        firstOwn = false;
+                    }
                     myPuppies.push(puppy);
                 } else if (puppy.owner !== accounts[0] && puppy.level > 0) {
+                    if (firstOther) {
+                        this.setState({targetPuppyId: puppy.id})
+                        firstOther = false;
+                    }
                     otherPuppies.push(puppy);
                 }
             }
@@ -48,6 +57,7 @@ class AttackList extends React.Component {
         }
         
         getPuppies()
+        this.listenToEvent()
     }
 
     handleInputChange(event) {
@@ -61,46 +71,45 @@ class AttackList extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("H")
         console.log(this.state.attackingPuppyId)
         console.log(this.state.targetPuppyId)
         const attackingPuppyId = this.state.attackingPuppyId
         const targetPuppyId = this.state.targetPuppyId
-        
-        this.props.contract.methods._attack(attackingPuppyId, targetPuppyId).send({ from: this.props.accounts[0] })
-        .on("receipt", (receipt) => {
-            alert("Success")
-        })
-        .on("error", error => {
-            alert(error.message);
-        });
-    
-        /*this.props.contract.events.SuccessAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
-            .on("data", function(event) {
-            this.setState({
-                message: "Attack Success! Such a brilliant puppy! Your puppy's level have increased by one :)"
-            })}).on("error", console.error);
-
-        this.props.contract.events.FailAttack({ filter: { _attackingPuppyId: attackingPuppyId } })
-            .on("data", function(event) {
-            this.setState({
-                message: "Attack Failed! No penalties given to your puppy. Better luck next time! :)"
-            })}).on("error", console.error);*/
-    
+        try{
+            this.props.contract.methods._attack(attackingPuppyId, targetPuppyId).send({ from: this.props.accounts[0] })
+                    .on("receipt", (receipt) => {
+                        console.log(receipt)
+                        this.componentDidMount()
+                        this.render()
+                    })
+                    .on("error", error => {
+                        console.log(error.message);
+                    });
+        } catch (err) {
+            console.log(err)
+        }
+            
     }
+
+    listenToEvent = () => {
+        
+        this.props.contract.events.SuccessAttack()
+        .on("data", function(event) {
+            console.log("Successss")
+            alert("Attack Success! Such a brilliant puppy! Your puppy's level have increased by one :) Please wait for page to refresh, if it did not refresh, refresh it yourself to see your puppies' new level")
+        }).on("error", console.error);
+
+        this.props.contract.events.FailAttack()
+        .on("data", function(event) {
+            console.log("Failuuuure")
+            alert("Attack Failed! No penalties given to your puppy. Better luck next time! :)")
+        }).on("error", console.error);
+
+        
+    };
     
 
     render() {
-
-        /*var message = '';
-        const [show, setShow] = useState(true);
-        if (this.state.message !== "") {
-            message = (
-                <AlertMessage type="info" show={show} onClose={() => setShow(false)}>
-                    {this.state.message}
-                </AlertMessage>
-            )
-        }*/
         var myPuppiesList = this.state.myPuppiesList
         var otherPuppiesList = this.state.otherPuppiesList
 
@@ -108,10 +117,13 @@ class AttackList extends React.Component {
         return(
             <div>
                 <h3>Attack Another Puppy!!!</h3>
-                <h5>If you see error messages, please ensure that you possess puppies with levels > 0 and there are eligible puppies for you to attack</h5>
+                <h4>Instructions:</h4>
+                <p>Choose one of your puppy to attack someone else's puppy! If your puppy level is higher than the targeted puppy, your pupy has a 70% chance of attack success. If your puppy level is same as targeted puppy, success rate is 50%. If your puppy level is lower than targeted puppy, success rate is 30%. Upon successful attack, your puppy level will increase by one while the targeted puppy level will decrease by one. Upon failed attack, your puppy level and targeted puppy level will remain the same.</p>
+                <p>If you see error messages, please ensure that you possess puppies with levels &gt; 0 and there are eligible puppies for you to attack. If transaction produced error, please try again by increasing your gas limit to at least 2100000.</p>
+                <br/>
                 <form name="AttackForm" onSubmit={this.handleSubmit}>
-                    <div className="row">
-                    <div className="form-group col-md-4">
+                    <div className="row ml-2">
+                    <div className="form-group col-md-4 ml-2">
                         <label htmlFor="myPuppies">Select your puppy to attack:</label>
                         <select className="form-control" id="myPuppies" name="attackingPuppyId" value={this.state.attackingPuppyId} onChange={this.handleInputChange} required>
                             {myPuppiesList}
