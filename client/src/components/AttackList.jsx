@@ -79,8 +79,7 @@ class AttackList extends React.Component {
             this.props.contract.methods._attack(attackingPuppyId, targetPuppyId).send({ from: this.props.accounts[0] })
                     .on("receipt", (receipt) => {
                         console.log(receipt)
-                        this.componentDidMount()
-                        this.render()
+                        this.refreshPage()
                     })
                     .on("error", error => {
                         console.log(error.message);
@@ -88,7 +87,12 @@ class AttackList extends React.Component {
         } catch (err) {
             console.log(err)
         }
+        
             
+    }
+
+    refreshPage = () => {
+        window.location.reload(false);
     }
 
     listenToEvent = () => {
