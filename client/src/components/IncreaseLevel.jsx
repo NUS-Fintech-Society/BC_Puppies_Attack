@@ -1,9 +1,10 @@
 import React from "react";
+import Web3 from 'web3';
 
 class IncreaseLevel extends React.Component{
     constructor(props){
         super(props);
-        this.state = {level: 5};
+        this.state = {};
         this.increasePuppyLevel = this.increasePuppyLevel.bind(this);
         this.revivePuppy = this.revivePuppy.bind(this);
     }
@@ -31,10 +32,7 @@ class IncreaseLevel extends React.Component{
     increasePuppyLevel(event){
         // do some checks on the level of the puppy
         const { contract: { methods } } = this.props;
-        methods.getAllPuppiesNumber().call().then(msg => {
-            console.log(msg);
-        });
-        methods._levelUp(4).send({ from: this.props.accounts[0]})
+        methods._levelUp(4).send({ from: this.props.accounts[0],  value: Web3.utils.toWei("0.005", 'ether')})
         .on("receipt", (receipt) => {
             console.log("Level has been upgraded");
         })
@@ -62,7 +60,7 @@ class IncreaseLevel extends React.Component{
         <div>
             <label>
                 Puppy level: <b>{this.state.level + "  "} </b>
-                <button onClick={this.revivePuppy}>Increase Level</button>
+                <button onClick={this.increasePuppyLevel}>Increase Level</button>
             </label>
         </div>
         );
