@@ -104,8 +104,6 @@ class AttackList extends React.Component {
             console.log("Failuuuure")
             alert("Attack Failed! No penalties given to your puppy. Better luck next time! :)")
         }).on("error", console.error);
-
-        
     };
     
 
