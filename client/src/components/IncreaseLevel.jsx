@@ -54,6 +54,8 @@ class IncreaseLevel extends React.Component{
         methods._levelUp(puppyId).send({ from: this.props.accounts[0],  value: Web3.utils.toWei("0.005", 'ether')})
         .on("receipt", (receipt) => {
             console.log("Level has been upgraded");
+            alert("Successfully leveled up your puppy!")
+            window.location.reload();
         })
         .on("error", error => {
             alert(error.message);
@@ -65,6 +67,8 @@ class IncreaseLevel extends React.Component{
         methods.revive(puppyId).send({ from: this.props.accounts[0], value: Web3.utils.toWei("0.01", 'ether')})
         .on("receipt", (receipt) => {
             console.log("Level has been upgraded");
+            alert("Successfully revived your puppy!")
+            window.location.reload();
         })
         .on("error", error => {
             alert(error.message);
@@ -79,9 +83,11 @@ class IncreaseLevel extends React.Component{
         methods.getMyPuppiesLevel(this.state.selectedPuppyId).call()
         .then(level => {
             if(level < 1){
+                alert("This will take a moment to update on the blockchain. Please press ok.");
                 console.log("Reviving this puppy: "+selectedPuppyId);
                 this.revivePuppy(selectedPuppyId);
             } else {
+                alert("This will take a moment to update on the blockchain. Please press ok.");
                 console.log("Increasing the level of this puppy: "+selectedPuppyId);
                 this.increasePuppyLevel(selectedPuppyId);
             }
