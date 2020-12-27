@@ -124,16 +124,16 @@ class AttackList extends React.Component {
                 <p>If you see error messages, please ensure that you possess puppies with levels &gt; 0 and there are eligible puppies for you to attack. If transaction produced error, please try again by increasing your gas limit to at least 2100000.</p>
                 <br/>
                 <form name="AttackForm" onSubmit={this.handleSubmit}>
-                    <div className="row ml-2">
+                    <div className="row ml-2 centreRow">
                     <div className="form-group col-md-4 ml-2">
-                        <label htmlFor="myPuppies">Select your puppy to attack:</label>
+                        <h4 htmlFor="myPuppies">Select your puppy to attack:</h4>
                         <select className="form-control" id="myPuppies" name="attackingPuppyId" value={this.state.attackingPuppyId} onChange={this.handleInputChange} required>
                             {myPuppiesList}
                         </select>
                     </div>
 
                     <div className="form-group col-md-4">
-                        <label htmlFor="otherPuppies">Select another puppy to attack:</label>
+                        <h4 htmlFor="otherPuppies">Select another puppy to attack:</h4>
                         <select className="form-control" id="otherPuppies" name="targetPuppyId" value={this.state.targetPuppyId} onChange={this.handleInputChange} required>
                             {otherPuppiesList}
                         </select>

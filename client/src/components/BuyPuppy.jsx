@@ -44,7 +44,7 @@ class BuyPuppy extends React.Component {
           </label>
           <input type="submit" value="Buy Puppy" />
         </form>
-        <button onClick={this.getTotalPuppies}>Get Puppies Number</button>
+        {/* <button onClick={this.getTotalPuppies}>Get Puppies Number</button> */}
       </div>
     );
   }

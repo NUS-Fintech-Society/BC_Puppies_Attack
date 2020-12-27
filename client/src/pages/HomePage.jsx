@@ -30,13 +30,13 @@ const HomePage = props => {
                 <AlertMessage type="success" show={show} onClose={() => setShow(false)}>
                     Welcome
                 </AlertMessage>
-                <h1 className="f2">Puppies Attack</h1>
-                <SearchBox searchChange = {onSearchChange} />
+                <h1 className="f2">Puppies Attack</h1>                
                 <BuyPuppy web3={props.web3} contract={props.contract} accounts={props.accounts}/>
                 <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList>
                 <IncreaseLevel web3={props.web3} contract={props.contract} accounts={props.accounts}/>
                 <ChangeName web3={props.web3} contract={props.contract} accounts={props.accounts}/>
                 {/* <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList> */}
+                {/* <SearchBox searchChange = {onSearchChange} /> */}
                 <ScrollAble>
                     { <Listing web3={props.web3} contract={props.contract} accounts={props.accounts} /> }
                 </ScrollAble>

@@ -1,7 +1,8 @@
 #alertBox {
     width: 100%;
     position:absolute;
-    bottom: 10px;
+    top: 10px;
+    z-index: 99;
 } 
 .alertMessage {
     width: 90%;

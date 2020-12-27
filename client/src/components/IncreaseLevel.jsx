@@ -114,9 +114,9 @@ class IncreaseLevel extends React.Component{
         return (
         <div>
             <form name="LevelUpForm" onSubmit={this.handleSubmit}>
-            <div className="row ml-2">
+            <div className="row ml-2 centreRow">
                     <div className="form-group col-md-4 ml-2">
-                        <label htmlFor="myPuppies">Select your puppy to level up/revive:</label>
+                        <h4 htmlFor="myPuppies">Select your puppy to level up/revive:</h4>
                         <select className="form-control" id="myPuppies" name="selectedPuppyId" value={this.state.selectedPuppyId} onChange={this.handleInputChange} required>
                             {this.state.myPuppiesList}
                         </select>
