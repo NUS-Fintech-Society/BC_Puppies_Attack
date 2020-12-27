@@ -24,6 +24,7 @@ class IncreaseLevel extends React.Component{
             const length = await contract.methods.getAllPuppiesNumber().call();
             for(var i = 0; i < length; i++){
                 const puppy = await contract.methods.allPuppies(i).call();
+                console.log("Puppy name: "+puppy.name+" puppy id: "+puppy.id);
                 if(puppy.owner === account[0] && puppy.level > 0){
                     myPuppies.push(puppy);
                     if(firstOwn){
