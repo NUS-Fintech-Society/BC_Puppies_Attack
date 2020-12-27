@@ -5,11 +5,15 @@ import SearchBox from '../components/SearchBox';
 import 'tachyons'
 import AttackList from '../components/AttackList';
 import BuyPuppy from '../components/BuyPuppy';
+<<<<<<< HEAD
 import ChangeName from '../components/ChangeName';
+=======
+import Listing from '../components/Listing';
+>>>>>>> Get listing to display properly
 
 
 const HomePage = props => {
-    
+
     const [show, setShow] = useState(false);
     const [searchfield, setSearchfield] = useState('');
 
@@ -20,8 +24,8 @@ const HomePage = props => {
     // Change show to true for the transition
     useEffect(() => {
         setShow(true);
-    }, []); 
-    
+    }, []);
+
     return (
         <div>
             <div className="tc">
@@ -35,7 +39,7 @@ const HomePage = props => {
                 <ChangeName web3={props.web3} contract={props.contract} accounts={props.accounts}/>
                 {/* <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts}></AttackList> */}
                 <ScrollAble>
-                    {/* <Cardlist cats={filteredCats} /> */}
+                    { <Listing web3={props.web3} contract={props.contract} accounts={props.accounts} /> }
                 </ScrollAble>
             </div>
         </div>
