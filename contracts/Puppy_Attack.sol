@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract Puppy_Attack {
     // Make use of SafeMath to do calculation that will not be result in overflow / incorrectness
-    using SafeMath for uint256;
+    using SafeMath for uint;
 
     // Constants
     uint256 reviveRate = 0.01 ether;
@@ -17,31 +17,24 @@ contract Puppy_Attack {
         address owner;
     }
 
-    mapping(address => uint256[]) public userToPuppy; //mapping (address -> uint[puppyId])
+    mapping(address => uint[]) public userToPuppy; //mapping (address -> uint[puppyId])
 
     Puppy[] public allPuppies;
 
-    function getAllPuppiesNumber() public view returns (uint256) {
+    function getAllPuppiesNumber() public view returns(uint) {
         return allPuppies.length;
     }
 
-    function getMyPuppiesLevel(uint256 puppyId) public view returns (uint256) {
+    function getMyPuppiesLevel(uint puppyId) public view returns(uint) {
         return allPuppies[puppyId].level;
     }
 
-    function getMyPuppiesName(uint256 puppyId)
-        public
-        view
-        returns (string memory)
-    {
+    function getMyPuppiesName(uint puppyId) public view returns(string memory) {
         return allPuppies[puppyId].name;
     }
 
-    modifier restrictedToOwner(uint256 puppyId) {
-        require(
-            msg.sender == allPuppies[puppyId].owner,
-            "Please make sure that you are the owner of the puppy."
-        );
+    modifier restrictedToOwner(uint puppyId) {
+        require(msg.sender == allPuppies[puppyId].owner, "Please make sure that you are the owner of the puppy.");
         _;
     }
 
@@ -67,22 +60,16 @@ contract Puppy_Attack {
         allPuppies[puppyId].level = allPuppies[puppyId].level.add(1);
     }
 
-    function _changeName(uint256 puppyId, string memory newName)
-        public
-        restrictedToOwner(puppyId)
-    {
+    function _changeName(uint puppyId, string memory newName) public restrictedToOwner(puppyId) {
         Puppy storage toBeChanged = allPuppies[puppyId];
         toBeChanged.name = newName;
     }
 
-    event FailAttack(uint256 _attackingPuppyId, uint256 _targetedPuppyId);
-    event SuccessAttack(uint256 _attackingPuppyId, uint256 _targetedPuppyId);
-    event PuppyCreated(uint256 _puppyId);
+    event FailAttack(uint _attackingPuppyId, uint _targetedPuppyId);
+    event SuccessAttack(uint _attackingPuppyId, uint _targetedPuppyId);
+    event PuppyCreated(uint _puppyId);
 
-    function _attack(uint256 _attackingPuppyId, uint256 _targetedPuppyId)
-        public
-        restrictedToOwner(_attackingPuppyId)
-    {
+    function _attack(uint _attackingPuppyId, uint _targetedPuppyId) public restrictedToOwner(_attackingPuppyId){
         require(allPuppies[_targetedPuppyId].level > 0);
         Puppy storage attackingPuppy = allPuppies[_attackingPuppyId];
         Puppy storage targetedPuppy = allPuppies[_targetedPuppyId];
@@ -109,15 +96,9 @@ contract Puppy_Attack {
             _modulus;
     }
 
-    function revive(uint256 puppyId) public payable restrictedToOwner(puppyId) {
-        require(
-            allPuppies[puppyId].level == 0,
-            "Your puppy does not require reviving."
-        );
-        require(
-            msg.value == reviveRate,
-            "You will need to pay 0.01 ether to revive your puppy."
-        );
+    function revive(uint puppyId) public payable restrictedToOwner(puppyId) {
+        require(allPuppies[puppyId].level == 0, "Your puppy does not require reviving.");
+        require(msg.value == reviveRate, "You will need to pay 0.01 ether to revive your puppy.");
         allPuppies[puppyId].level = allPuppies[puppyId].level.add(1);
     }
 }
