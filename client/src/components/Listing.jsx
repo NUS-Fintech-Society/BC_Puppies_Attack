@@ -16,7 +16,7 @@ const Listing = props => {
     return (
         <div>
             {puppies.map((puppy) => {
-                return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} />
+                return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} methods={props.contract.methods} accounts={props.accounts}/>
             })}
         </div>
     );

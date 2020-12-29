@@ -1,0 +1,9 @@
+.changeNameModal {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    height: 300px;
+    width: 100%;
+}
