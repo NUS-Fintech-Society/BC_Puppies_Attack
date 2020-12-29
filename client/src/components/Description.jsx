@@ -5,12 +5,12 @@ const Description = () => {
     return(
         <div>
             <Alert variant="success">
-                <h3>Description:</h3>
+                <h3>WELCOME:</h3>
                 <p>In Puppies Attack, you get to own your very own <strong>UNIQUE</strong> puppies. Other than being a cutie pie, your puppy can attack other puppies in hopes of gaining extra levels.</p>
                 <p>Every puppy is stored in <strong>ethereum's ropsten blockchain</strong>, ensuring security and immutability.</p>
             </Alert>
             <Alert variant="warning">
-                <h3>Attacking Instructions:</h3>
+                <h3>ATTACKING INSTRUCTIONS:</h3>
                 <p>Choose one of your puppy to attack someone else's puppy! If your puppy level is higher than the targeted puppy, your pupy has a 70% chance of attack success. If your puppy level is same as targeted puppy, success rate is 50%. If your puppy level is lower than targeted puppy, success rate is 30%. Upon successful attack, your puppy level will increase by one while the targeted puppy level will decrease by one. Upon failed attack, your puppy level and targeted puppy level will remain the same.</p>
                 <p style={{fontSize: '15px', fontStyle: 'italic'}}>
                     (Note: If you see error messages, please ensure that you possess puppies with levels &gt; 0 and there are eligible puppies for you to attack. If transaction produced error, please try again by increasing your gas limit to at least 2100000.)
