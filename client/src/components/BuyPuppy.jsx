@@ -38,11 +38,21 @@ class BuyPuppy extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Buy Puppy" />
+          {/* <label>
+            <h4 htmlFor="myPuppies">Select your puppy to attack:</h4>
+            <div class="input-group input-group-sm mb-3">
+              Name: &nbsp;
+              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={this.state.value} onChange={this.handleChange}/>
+            </div>
+          </label> &nbsp;
+          <input class="btn btn-primary" type="submit" value="Buy Puppy" /> */}
+          <div className="row ml-2 centreRow">
+            <div className="form-group col-md-4 ml-2">
+                <h4 htmlFor="myPuppies">Buy Puppy:</h4>
+                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Name of Puppy:" value={this.state.value} onChange={this.handleChange}/>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Buy Now!" />
+          </div>
         </form>
         {/* <button onClick={this.getTotalPuppies}>Get Puppies Number</button> */}
       </div>
