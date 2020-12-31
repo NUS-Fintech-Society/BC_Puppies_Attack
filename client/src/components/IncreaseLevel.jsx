@@ -114,9 +114,11 @@ class IncreaseLevel extends React.Component{
         return (
         <div>
             <form name="LevelUpForm" onSubmit={this.handleSubmit}>
+            
             <div className="row ml-2 centreRow">
                     <div className="form-group col-md-4 ml-2">
                         <h4 htmlFor="myPuppies">Select your puppy to level up/revive:</h4>
+                        <h6>(Leveling up increases your puppy's level by 1 with a cost of 0.005 ether. However, if your puppy is level 0, you may revive it to level 1 with 0.01 ether.)</h6>
                         <select className="form-control" id="myPuppies" name="selectedPuppyId" value={this.state.selectedPuppyId} onChange={this.handleInputChange} required>
                             {this.state.myPuppiesList}
                         </select>
@@ -125,8 +127,10 @@ class IncreaseLevel extends React.Component{
                     <button type="submit" className="btn btn-primary">
                         {this.state.selectedPuppyLevel > 0 ? "Level Up" : "Revive!"}
                     </button>
-                    </div>
+            </div>
+            
             </form>
+
         </div>
         );
     }
