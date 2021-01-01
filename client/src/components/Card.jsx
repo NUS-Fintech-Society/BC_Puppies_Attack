@@ -18,7 +18,7 @@ const Card = ({ id, name, level, methods, accounts }) => {
         } else if (formValue === name) {
             alert('Please enter a different name to change to');
         } else {
-            methods._changeName(id, 'NewPuppyTestName').send({ from: accounts[0] })
+            methods._changeName(id, formValue).send({ from: accounts[0] })
             .on("receipt", (receipt) => {
             alert(`Your puppy name has been changed to ${formValue}!`);
             })
