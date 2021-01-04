@@ -24,18 +24,15 @@ const HomePage = props => {
                 <AlertMessage type="success" show={show} onClose={() => setShow(false)}>
                     Welcome
                 </AlertMessage>
-                <h1 className="f2">Puppies Attack</h1> 
-                <Description />    
-                <h2 className="title">MANAGE MY PUPPIES</h2>           
+                <h1 className="f2">Puppies Attack</h1>
+                <Description />
+                <h2 className="title">MANAGE MY PUPPIES</h2>
                 <BuyPuppy web3={props.web3} contract={props.contract} accounts={props.accounts}/>
                 <br />
                 <IncreaseLevel web3={props.web3} contract={props.contract} accounts={props.accounts}/>
-                <h2 className="title">ATTACK!</h2> 
-                <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts} />        
-                <h2 className="title">GALLERY</h2>           
-                <ScrollAble>
-                    { <Listing web3={props.web3} contract={props.contract} accounts={props.accounts} /> }
-                </ScrollAble>
+                <h2 className="title">ATTACK!</h2>
+                <AttackList web3={props.web3} contract={props.contract} accounts={props.accounts} />
+                <Listing web3={props.web3} contract={props.contract} accounts={props.accounts} />
             </div>
         </div>
     )
