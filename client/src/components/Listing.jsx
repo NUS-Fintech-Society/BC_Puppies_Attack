@@ -26,13 +26,13 @@ const Listing = props => {
             <h2 className="title">MY PUPPIES</h2>
             <ScrollAble>
                 {myPuppies.map((puppy) => {
-                    return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} methods={props.contract.methods} accounts={props.accounts}/>
+                    return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} methods={props.contract.methods} accounts={props.accounts} isMyPuppy />
                 })}
             </ScrollAble>
             <h2 className="title">OTHER PUPPIES</h2>
             <ScrollAble>
                 {otherPuppies.map((puppy) => {
-                    return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} methods={props.contract.methods} accounts={props.accounts}/>
+                    return <Card key={puppy.id} id={puppy.id} name={puppy.name} level={puppy.level} methods={props.contract.methods} accounts={props.accounts} isMyPuppy={false} />
                 })}
             </ScrollAble>
         </div>

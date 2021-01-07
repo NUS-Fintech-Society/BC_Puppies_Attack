@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import './Card.css';
 
-const Card = ({ id, name, level, methods, accounts }) => {
+const Card = ({ id, name, level, methods, accounts, isMyPuppy }) => {
     const [showModal, setShowModal] = useState(false);
     const [formValue, setFormValue] = useState('');
 
@@ -43,7 +43,7 @@ const Card = ({ id, name, level, methods, accounts }) => {
             <div>
                 <h3>{name}</h3>
                 <p>{level}</p>
-                <Button variant="outline-dark" onClick={() => setShowModal(true)}>Change Name</Button>
+                {isMyPuppy && <Button variant="outline-dark" onClick={() => setShowModal(true)}>Change Name</Button>}
             </div>
             {showModal
             && (
