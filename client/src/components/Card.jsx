@@ -20,10 +20,11 @@ const Card = ({ id, name, level, methods, accounts }) => {
         } else {
             methods._changeName(id, formValue).send({ from: accounts[0] })
             .on("receipt", (receipt) => {
-            alert(`Your puppy name has been changed to ${formValue}!`);
+                alert(`Your puppy name has been changed to ${formValue}!`);
+                window.location.reload();
             })
             .on("error", error => {
-            alert(error.message);
+                alert(error.message);
             });
 
             setFormValue('');

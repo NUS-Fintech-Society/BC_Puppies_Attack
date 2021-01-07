@@ -22,6 +22,7 @@ class BuyPuppy extends React.Component {
     .on("receipt", (receipt) => {
       alert(`Your puppy, ${this.state.value} has been created!`);
       this.setState({ value: '' });
+      window.location.href = window.location.href;
     })
     .on("error", error => {
       alert(error.message);

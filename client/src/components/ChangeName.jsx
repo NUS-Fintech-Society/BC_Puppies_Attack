@@ -7,6 +7,7 @@ const ChangeName = (props) => {
     methods._changeName(0, 'NewPuppyTestName').send({ from: accounts[0] })
     .on("receipt", (receipt) => {
       alert(`Your puppy name has been changed to ${puppyName}!`);
+      window.location.reload();
     })
     .on("error", error => {
       alert(error.message);
