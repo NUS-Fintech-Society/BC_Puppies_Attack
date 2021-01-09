@@ -17,6 +17,11 @@ To run the program on your computer, simply follow the instructions below after 
 2. Store your wallet seed phrase / MNEMONIC for your Metamask account in the `.env` file.
 3. Run `truffle migrate --network ropsten_infura --reset` to redeploy the smart contract on a new blockchain.
 
+## Images of the Web Application
+![Demo 1](client/public/Demo1.PNG)
+![Demo 2](client/public/Demo2.PNG)
+![Demo 3](client/public/Demo3.PNG)
+
 ## Contributer:
 - Low En Hao (https://github.com/enhao25)
 - Xin Ying (https://github.com/Hawayo)
