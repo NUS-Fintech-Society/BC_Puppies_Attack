@@ -24,7 +24,6 @@ class IncreaseLevel extends React.Component {
       const length = await contract.methods.getAllPuppiesNumber().call();
       for (var i = 0; i < length; i++) {
         const puppy = await contract.methods.allPuppies(i).call();
-        console.log("Puppy name: " + puppy.name + " puppy id: " + puppy.id);
         if (puppy.owner === account[0]) {
           myPuppies.push(puppy);
           if (firstOwn) {
@@ -47,7 +46,6 @@ class IncreaseLevel extends React.Component {
       });
     };
 
-    console.log("Component did mount");
     getPuppies();
   }
 
@@ -62,7 +60,6 @@ class IncreaseLevel extends React.Component {
         value: Web3.utils.toWei("0.005", "ether"),
       })
       .on("receipt", (receipt) => {
-        console.log("Level has been upgraded");
         alert("Successfully leveled up your puppy!");
         window.location.reload();
       })
@@ -82,7 +79,6 @@ class IncreaseLevel extends React.Component {
         value: Web3.utils.toWei("0.01", "ether"),
       })
       .on("receipt", (receipt) => {
-        console.log("Level has been upgraded");
         alert("Successfully revived your puppy!");
         window.location.reload();
       })
@@ -93,7 +89,6 @@ class IncreaseLevel extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
     const selectedPuppyId = this.state.selectedPuppyId;
     const {
       contract: { methods },
@@ -106,13 +101,11 @@ class IncreaseLevel extends React.Component {
           alert(
             "This will take a moment to update on the blockchain. Please press ok.",
           );
-          console.log("Reviving this puppy: " + selectedPuppyId);
           this.revivePuppy(selectedPuppyId);
         } else {
           alert(
             "This will take a moment to update on the blockchain. Please press ok.",
           );
-          console.log("Increasing the level of this puppy: " + selectedPuppyId);
           this.increasePuppyLevel(selectedPuppyId);
         }
       });
@@ -135,7 +128,6 @@ class IncreaseLevel extends React.Component {
       .then((level) => {
         this.setState({ selectedPuppyLevel: level });
       });
-    console.log("Selected puppy id to level up: ", value);
   }
 
   render() {

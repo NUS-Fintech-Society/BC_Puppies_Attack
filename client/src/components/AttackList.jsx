@@ -74,8 +74,6 @@ class AttackList extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.attackingPuppyId);
-    console.log(this.state.targetPuppyId);
     const attackingPuppyId = this.state.attackingPuppyId;
     const targetPuppyId = this.state.targetPuppyId;
     try {
@@ -83,7 +81,6 @@ class AttackList extends React.Component {
         ._attack(attackingPuppyId, targetPuppyId)
         .send({ from: this.props.accounts[0] })
         .on("receipt", (receipt) => {
-          console.log(receipt);
           this.refreshPage();
         })
         .on("error", (error) => {
@@ -107,7 +104,6 @@ class AttackList extends React.Component {
         },
       })
       .on("data", function (event) {
-        console.log("Successss");
         alert(
           "Attack Success! Such a brilliant puppy! Your puppy's level have increased by one :) Please wait for page to refresh, if it did not refresh, refresh it yourself to see your puppies' new level",
         );
@@ -122,7 +118,6 @@ class AttackList extends React.Component {
         },
       })
       .on("data", function (event) {
-        console.log("Failuuuure");
         alert(
           "Attack Failed! No penalties given to your puppy. Better luck next time! :)",
         );
