@@ -22,12 +22,16 @@ class IncreaseLevel extends React.Component {
       var myPuppies = [];
       var firstOwn = true;
       const length = await contract.methods.getAllPuppiesNumber().call();
+
       for (var i = 0; i < length; i++) {
         const puppy = await contract.methods.allPuppies(i).call();
         if (puppy.owner === account[0]) {
           myPuppies.push(puppy);
           if (firstOwn) {
-            this.setState({ selectedPuppyId: puppy.id });
+            this.setState({
+              selectedPuppyId: puppy.id,
+              selectedPuppyLevel: puppy.level,
+            });
             firstOwn = false;
           }
         }
@@ -123,7 +127,7 @@ class IncreaseLevel extends React.Component {
       contract: { methods },
     } = this.props;
     methods
-      .getMyPuppiesLevel(this.state.selectedPuppyId)
+      .getMyPuppiesLevel(value)
       .call()
       .then((level) => {
         this.setState({ selectedPuppyLevel: level });

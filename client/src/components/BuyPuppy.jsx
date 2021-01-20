@@ -53,7 +53,7 @@ class BuyPuppy extends React.Component {
               <h4 htmlFor="myPuppies">Buy Puppy:</h4>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 aria-label="Small"
                 aria-describedby="inputGroup-sizing-sm"
                 placeholder="Name of Puppy:"
@@ -61,7 +61,7 @@ class BuyPuppy extends React.Component {
                 onChange={this.handleChange}
               />
             </div>
-            <input class="btn btn-primary" type="submit" value="Buy Now!" />
+            <input className="btn btn-primary" type="submit" value="Buy Now!" />
           </div>
         </form>
       </div>
