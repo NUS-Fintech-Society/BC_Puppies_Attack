@@ -18,9 +18,9 @@ const Description = () => {
           immutability.
         </p>
         <p style={{ fontSize: "15px", fontStyle: "italic" }}>
-          (<strong>Cost:</strong> Leveling up increases your puppy's level by 1
-          with a cost of 0.005 ether. However, if your puppy is level 0, you may
-          revive it to level 1 with 0.01 ether.)
+          (Cost: Leveling up increases your puppy's level by 1 with a cost of
+          0.005 ether. However, if your puppy is level 0, you may revive it to
+          level 1 with 0.01 ether.)
         </p>
       </Alert>
       <Alert variant="warning">
